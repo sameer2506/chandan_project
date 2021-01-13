@@ -1,0 +1,181 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" href="images/logo.jpg" type="image/icon type">
+    <title>Civil, Infrastructure, Transportation, Project</title>
+
+    <style type="text/css">
+        form {
+            padding: 10px;
+            height: 400px;
+        }
+        
+        label {
+            font-weight: bolder;
+        }
+        
+        input {
+            padding: 12px;
+            width: 220px;
+            height: 30px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    </header>
+    <div class="header-main homepage-01">
+        <div class="container">
+            <div class="header-main-wrapper">
+                <div class="navbar-heade">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+                            <center>
+                                <!-- <a href="index.html"><img src="images/logo.jpg" class="img-responsive" width="100px" height="90px" style="color: #0d2b54;">Gammon India Ltd.</a>
+                               -->
+                                <p style="color: #0d2b54; font-weight: bolder; margin-top: 25px; font-size: 25px;">Gammon India Ltd.</p>
+                            </center>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 menupad">
+                            <div id="cssmenu">
+                                <ul>
+                                    <li><a href="index.html" class="active">Home</a></li>
+                                    <li class="has-sub"><a href="about.html">ABOUT US</a>
+                                    </li>
+
+                                    <li class="has-sub"><a href="project.html">PROJECTS</a>
+                                    </li>
+                                    <li class="has-sub"><a href="contact.html">CONTACT US</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </header>
+
+    <div class="container">
+        <p style="font-size: 25px; font-weight: bolder; text-align: center; text-decoration: underline;">
+            Contact Us
+        </p>
+        <div class="content">
+            <p style="text-align: center;">
+                <strong> At + Po: Usfa <br> PS: Gaurichak <br> Patna, Bihar, India <br> Mobile No.: +91-6201328897 <br> Email Id: <span style="color: blue;"> chandankrgupta9787@gmail.com </span> </strong>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="container mt-3">
+        <p style="text-align: center; font-size: 25px; color: black; font-weight: bolder; text-decoration: underline;">Feedback Or Help Center</p>
+
+        <div id="mobi_view">
+            <form enctype="multipart/form-data" style="border: 1px dotted black;">
+                <div class="form_cont">
+                    <div>
+                        <label for="name">Name :</label>
+                    </div>
+                    <div>
+                        <input style="margin-top: 2px; margin-bottom: 2px;" type="text" name="name" id="name"><br>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="email">Email :</label>
+                    </div>
+                    <div>
+                        <input style="margin-top: 2px; margin-bottom: 2px;" type="text" name="email" id="email">
+                    </div>
+                </div>
+                <br>
+                <label for="message">Message :</label><br>
+                <textarea cols="120" rows="5" id="message"></textarea>
+                <div class="mt-3"></div>
+                <button type="button" name="submit" class="btn btn-primary" onclick="insert()">Submit</button>
+        </div>
+    </div>
+    <div class="success">
+        <p id="success"></p>
+    </div>
+    </form>
+    </div>
+
+
+    </div>
+    <div class="footer">
+
+    </div>
+
+    <style>
+        .footer {
+            width: 100%;
+            height: 5px;
+            background-color: red;
+            position: fixed;
+        }
+    </style>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDel76FjZFklye6Y_XjKV_PKpAGgQ6JCXk",
+            authDomain: "contact-490d3.firebaseapp.com",
+            databaseURL: "https://contact-490d3.firebaseio.com",
+            projectId: "contact-490d3",
+            storageBucket: "contact-490d3.appspot.com",
+            messagingSenderId: "487227814678",
+            appId: "1:487227814678:web:2d1e1d8f6e8b1ea9b8d637",
+            measurementId: "G-SQ3HVM3EJR"
+
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <script>
+        function insert() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            //pre built function to upload data to firebase
+            //path where your data will be stored
+            firebase.database().ref('user/' + name).set({
+                userName: name,
+                userEmail: email,
+                userMessage: message
+            });
+
+            document.getElementById("success").innerHTML = "Data is saved."
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
